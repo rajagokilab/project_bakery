@@ -1,0 +1,16 @@
+/* Contact Page Styles */
+#contactForm .form-control {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+#contactForm button {
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+#contactForm button:hover {
+  background-color: #d98c3d;
+  color: #fff;
+}

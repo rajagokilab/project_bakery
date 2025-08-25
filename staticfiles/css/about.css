@@ -1,0 +1,31 @@
+ body {
+            font-family: 'League Spartan', sans-serif;
+            color: #4a4a4a;
+            background-color: #f7f7f7;
+        }
+        .container.about-us-page {
+            max-width: 1100px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-family: 'League Spartan', sans-serif;
+            color: #d1956c;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .img-fluid {
+            border-radius: 15px;
+        }
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            background-color: #d1956c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
