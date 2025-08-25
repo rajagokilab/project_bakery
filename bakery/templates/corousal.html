@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Developer Banner</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter Font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color:#FFF8F0;
+    }
+
+    /* Custom style for the banner content box */
+    .banner-shape-bg {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
+      padding-bottom: 20%;
+      position: relative;
+    }
+
+    .slide1 { background-color: rgba(255, 191, 191, 0.85); }
+    .slide2 { background-color: rgba(156, 210, 108, 0.85); }
+    .slide3 { background-color: rgba(232, 195, 117, 0.85); }
+    .slide4 { background-color: rgba(245, 242, 170, 0.85); }
+
+    /* Dot styles */
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Carousel Container -->
+<div id="carousel-container" class="relative w-full overflow-hidden bg-white shadow-xl">
+
+  <!-- Slides Container -->
+  <div id="slides-container" class="flex transition-transform duration-700 ease-in-out">
+    <!-- Slide 1 -->
+    <div class="slide flex-none w-full relative">
+      <img src="{% static 'images/cupcake.jpeg' %}" alt="Slide 1" class="w-full h-[28rem] object-cover">
+      <div class="absolute inset-0 flex items-start justify-center p-8">
+        <div class="banner-shape-bg slide1 w-full max-w-xl">
+          <div class="absolute inset-x-0 top-0 p-6 text-center">
+            <h2 class="text-2xl sm:text-xl font-bold mb-2 text-red-600">Fresh. Local. Handmade.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">We bake daily so you can enjoy real flavour, every time</p>
+          <a href="{% url 'product_list' %}"> 
+  <button class="mt-2 px-4 py-1 bg-yellow-400 hover:bg-yellow-500 transition duration-300 rounded-xl font-semibold text-lg text-gray-800">
+    EXPLORE NOW
+  </button>
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide flex-none w-full relative">
+      <img src="{% static 'images/cake.jpg' %}" alt="Slide 2" class="w-full h-[28rem] object-cover">
+      <div class="absolute inset-0 flex items-start justify-center p-8">
+        <div class="banner-shape-bg slide2 w-full max-w-xl">
+          <div class="absolute inset-x-0 top-0 p-6 text-center">
+            <h2 class="text-2xl sm:text-xl font-bold mb-2 text-red-600">Crafting Artisan Bakes Since 2012.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">Freshly baked breads, cakes, and pastries.</p>
+         <a href="{% url 'product_list' %}"> 
+  <button class="mt-2 px-4 py-1 bg-yellow-400 hover:bg-yellow-500 transition duration-300 rounded-xl font-semibold text-lg text-gray-800">
+    EXPLORE NOW
+  </button>
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide flex-none w-full relative">
+      <img src="{% static 'images/cookie.jpeg' %}" alt="Slide 3" class="w-full h-[28rem] object-cover">
+      <div class="absolute inset-0 flex items-start justify-center p-8">
+        <div class="banner-shape-bg slide3 w-full max-w-xl">
+          <div class="absolute inset-x-0 top-0 p-6 text-center">
+            <h2 class="text-2xl sm:text-xl font-bold mb-2 text-red-600">Fresh. Local. Handmade.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">We bake daily so you can enjoy real flavour, every time</p>
+           <a href="{% url 'product_list' %}"> 
+  <button class="mt-2 px-4 py-1 bg-yellow-400 hover:bg-yellow-500 transition duration-300 rounded-xl font-semibold text-lg text-gray-800">
+    EXPLORE NOW
+  </button>
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide flex-none w-full relative">
+      <img src="{% static 'images/bannerzuchini.jpeg' %}" alt="Slide 4" class="w-full h-[28rem] object-cover">
+      <div class="absolute inset-0 flex items-start justify-center p-8">
+        <div class="banner-shape-bg slide4 w-full max-w-xl">
+          <div class="absolute inset-x-0 top-0 p-6 text-center">
+            <h2 class="text-2xl sm:text-xl font-bold mb-2 text-red-600">Fresh. Local. Handmade.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">Freshly baked breads, cakes, and pastries.</p>
+           <a href="{% url 'product_list' %}"> 
+  <button class="mt-2 px-4 py-1 bg-yellow-400 hover:bg-yellow-500 transition duration-300 rounded-xl font-semibold text-lg text-gray-800">
+    EXPLORE NOW
+  </button>
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div id="dots-container" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"></div>
+
+</div>
+
+<script>
+  const slidesContainer = document.getElementById('slides-container');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsContainer = document.getElementById('dots-container');
+
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  let slideWidth = slides[0].offsetWidth;
+
+  // Create dots dynamically
+  function createDots() {
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot', 'bg-gray-400', 'cursor-pointer', 'hover:bg-gray-600');
+      dot.setAttribute('data-index', i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // Update active dot
+  function updateDots() {
+    const dots = Array.from(dotsContainer.children);
+    dots.forEach((dot, index) => {
+      if (index === currentSlide) {
+        dot.classList.add('bg-blue-500');
+      } else {
+        dot.classList.remove('bg-blue-500');
+      }
+    });
+  }
+
+  // Show the current slide
+  function showSlide(index) {
+    slideWidth = slides[0].offsetWidth;
+    slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+    updateDots();
+  }
+
+  // Dot navigation
+  dotsContainer.addEventListener('click', (e) => {
+    if (e.target.tagName === 'SPAN') {
+      currentSlide = parseInt(e.target.getAttribute('data-index'));
+      showSlide(currentSlide);
+    }
+  });
+
+  // Auto-play
+  let autoPlayInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }, 3000); // 3 seconds
+
+  // Pause on hover
+  const carouselContainer = document.getElementById('carousel-container');
+  carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+  carouselContainer.addEventListener('mouseleave', () => {
+    autoPlayInterval = setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }, 3000);
+  });
+
+  // Initial setup
+  window.onload = function() {
+    createDots();
+    showSlide(currentSlide);
+  };
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    slideWidth = slides[0].offsetWidth;
+    showSlide(currentSlide);
+  });
+</script>
+
+</body>
+</html>

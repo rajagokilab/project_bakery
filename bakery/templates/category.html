@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-capitalize">{{ category.name }}</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card product-card shadow-sm border-0 h-100">
+                <div class="card-image" style="height:200px; overflow:hidden;">
+                    <img src="{{ product.image }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ product.name }}">
+                    <span class="wishlist-heart {% if product.in_wishlist %}added{% endif %}">
+                        <a href="{% url 'add_to_wishlist' product.slug %}">&#10084;</a>
+                    </span>
+                </div>
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">₹ {{ product.price }}</p>
+                    </div>
+                    <a href="{% url 'product_detail' product.slug %}" class="btn btn-sm btn-outline-primary mt-2">View</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No products found in this category.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

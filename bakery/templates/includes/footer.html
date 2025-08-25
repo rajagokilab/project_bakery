@@ -1,0 +1,119 @@
+{% load static %}
+
+<style>
+/* Footer Styles */
+
+/* Footer Styles */
+.footer-container {
+    position: relative;
+    padding: 30px 0;
+    font-family: Arial, sans-serif;
+    color: black;
+    overflow: hidden; /* Ensures pseudo-element doesn't overflow */
+}
+
+.footer-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("{% static 'images/image.png' %}");
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    z-index: 0;
+}
+
+.footer-inner {
+    position: relative;
+    z-index: 1; /* Keep content above blurred background */
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column h2 {
+    font-family: 'Brush Script MT', cursive;
+    color: #f36b2c;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.footer-column h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+
+/* Force all text to black and remove text decoration, including hover/focus */
+.footer-column a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column address {
+    font-style: normal;
+    line-height: 1.6;
+}
+
+.footer-social a {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: black;
+}
+</style>
+
+<footer class="footer-container">
+    <div class="footer-inner container">
+        <div class="row g-4">
+
+            <!-- Logo -->
+            <div class="col-12 col-md-3 text-center text-md-start">
+                <h2>
+                    <img src="{% static 'images/flogo.png' %}" alt="Cherii Bakery Logo" height="100">
+                </h2>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-6 col-md-3">
+                <h3>Quick Links</h3>
+                <p><a href="#" style="color: black; text-decoration: none;">Track Your Order</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Privacy Policy</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Refund & Cancellation Policy</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Terms & Conditions</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Contact</a></p>
+            </div>
+
+            <!-- Shop -->
+            <div class="col-6 col-md-3">
+                <h3>Shop</h3>
+                <p><a href="#" style="color: black; text-decoration: none;">Cookies</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Muesli</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Granola Bars</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Seed Mixes</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Gift Boxes</a></p>
+                <p><a href="#" style="color: black; text-decoration: none;">Super Savers</a></p>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-12 col-md-3">
+                <h3>Contact</h3>
+                <address>
+                    📍 No.45, Anna Salai, T. Nagar,<br>Chennai - 600 017<br>
+                    📧 <a href="mailto:info@cherii.com">info@cherii.com</a><br>
+                    📞 <a href="tel:+1234567890">+123 456 7890</a>
+                </address>
+
+                <h3 class="mt-3">Follow us</h3>
+                <p class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>

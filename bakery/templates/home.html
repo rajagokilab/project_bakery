@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - Cherii Bakery{% endblock %}
+
+{% block content %}
+
+<!-- Hero Carousel -->
+
+<div>
+    {% include "corousal.html" %}
+</div>
+<!-- Why Choose Us -->
+<section id="why-choose-us" class="py-12 text-center">
+  <div class="container mx-auto px-4">
+    <!-- Section Heading -->
+    <h2 class="mb-10 font-bold text-2xl sm:text-3xl md:text-4xl" style="color: #D99A6C;">
+      Why Choose Us
+    </h2>
+
+    <!-- Cards Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      
+      <!-- Card 1 -->
+      <div class="p-6 bg-white rounded-lg shadow-md border border-black flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #D99A6C;">
+          <i class='bx bx-cheese text-white text-2xl'></i>
+        </div>
+        <h5 class="font-semibold mb-2">Fresh, Handcrafted Daily</h5>
+        <p class="text-gray-700 text-sm sm:text-base">
+          Every morning, our bakers start early to bring you the freshest breads, pastries, and cakes—made from scratch using real, wholesome ingredients.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="p-6 bg-white rounded-lg shadow-md border border-black flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #D99A6C;">
+          <i class="fa-solid fa-wheat-awn text-white text-2xl"></i>
+        </div>
+        <h5 class="font-semibold mb-2">Locally Sourced Ingredients</h5>
+        <p class="text-gray-700 text-sm sm:text-base">
+          We partner with local farms and suppliers to ensure the highest quality and support our community.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="p-6 bg-white rounded-lg shadow-md border border-black flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #D99A6C;">
+          <i class="fa-solid fa-hand-holding-heart text-white text-2xl"></i>
+        </div>
+        <h5 class="font-semibold mb-2">Unique & Custom Creations</h5>
+        <p class="text-gray-700 text-sm sm:text-base">
+          From classic croissants to custom birthday cakes, we bake with creativity and care—tailored to your tastes and special occasions.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="p-6 bg-white rounded-lg shadow-md border border-black flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #D99A6C;">
+          <i class="fa-solid fa-handshake text-white text-2xl"></i>
+        </div>
+        <h5 class="font-semibold mb-2">Warm, Welcoming Atmosphere</h5>
+        <p class="text-gray-700 text-sm sm:text-base">
+          We’re more than just a bakery—we’re your neighborhood spot for sweet treats, coffee, and friendly smiles.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="p-6 bg-white rounded-lg shadow-md border border-black flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #D99A6C;">
+          <i class="fa-solid fa-graduation-cap text-white text-2xl"></i>
+        </div>
+        <h5 class="font-semibold mb-2">Passion for Excellence</h5>
+        <p class="text-gray-700 text-sm sm:text-base">
+          Baking is our passion, and it shows in every detail—from the golden crust to the last crumb.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Offers & Deals -->
+<section id="offers-deals" class="py-12 text-center " style="background-color:#FFF8F0;">
+  <!-- Section Heading -->
+  <h2 class="mb-10 font-bold text-2xl sm:text-3xl md:text-4xl" style="color: #D99A6C;">
+    OFFERS & DEALS
+  </h2>
+
+  <!-- Full Width Image -->
+  <div class="w-full">
+    <img src="{% static 'images/offer.png' %}" alt="Offers" class="w-full h-auto object-cover">
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-5" style="background-color:#FFF8F0;">
+  <div class="container">
+    <div class="row align-items-start">
+      
+         <h2 class="fw-bold mb-4" style="color:#D99A6C; font-family:'League Spartan', sans-serif; text-align: center;">
+          Common Questions for Customers
+        </h2>
+      <!-- Left: Q&A -->
+      <div class="col-lg-7">
+       
+
+        <div class="faq-item">
+          <h5 class="fw-bold">1. What kind of content do you post on your blog?</h5>
+          <p>We share baking tips, behind-the-scenes stories, seasonal updates, recipes, product highlights, and community events.</p>
+        </div>
+
+        <div class="faq-item">
+          <h5>2. How often do you update the blog?</h5>
+          <p>We aim to post at least once or twice a month. Subscribe to our newsletter for updates!</p>
+        </div>
+
+        <div class="faq-item">
+          <h5>3. Can I request a blog topic or recipe?</h5>
+          <p>Absolutely! Contact us or leave a comment on our blog to share your ideas.</p>
+        </div>
+
+        <div class="faq-item">
+          <h5>4. Are the recipes you share easy for beginners?</h5>
+          <p>Yes! We provide clear instructions, tips, and sometimes step-by-step photos.</p>
+        </div>
+
+        <div class="faq-item">
+          <h5>5. Do you feature guest posts or collaborations?</h5>
+          <p>We’re open to collaborating with local chefs and food enthusiasts.</p>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="col-lg-5 text-center">
+        <img src="{% static 'images/47.png' %}" alt="Bakery FAQ" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div>
+    <img src="{% static 'images/46.png' %}" alt="design" style="padding: 0 150px 0 150px;align-items: center;">
+</div>
+
+<!-- Customer Testimonials -->
+ {% include "testimonial.html" %}
+{% endblock %}

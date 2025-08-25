@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+
+  <!-- Title -->
+  <h2 class="text-center fw-bold mb-4">Breads</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for bread in breads %}
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-4 position-relative h-100">
+
+        <!-- Wishlist Heart -->
+        <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm wishlist-btn" 
+                data-id="{{ bread.slug }}">
+          <i class="bi {% if bread.in_wishlist %}bi-heart-fill text-danger{% else %}bi-heart{% endif %} fs-5"></i>
+        </button>
+
+        <!-- Product Image -->
+        <a href="{% url 'product_detail' bread.slug %}">
+          <img src="{{ bread.image }}" class="card-img-top rounded-top-4" 
+               alt="{{ bread.name }}" style="height:280px; object-fit:cover;">
+        </a>
+
+        <!-- Product Info Overlay -->
+        <div class="card-body text-center bg-warning bg-opacity-25 rounded-bottom-4 py-3">
+          <h5 class="fw-bold text-uppercase mb-1">{{ bread.name }}</h5>
+          <p class="mb-0">FROM: ₹ {{ bread.price }} <small class="text-muted">PER KG</small></p>
+        </div>
+
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-muted">No products available.</p>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".wishlist-btn");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const icon = this.querySelector("i");
+      const productSlug = this.dataset.id;
+
+      // Toggle heart icon
+      icon.classList.toggle("bi-heart");
+      icon.classList.toggle("bi-heart-fill");
+      icon.classList.toggle("text-danger");
+
+      // AJAX request to add/remove from wishlist
+      fetch(`/wishlist/toggle/${productSlug}/`, {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({})
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("Wishlist updated:", data);
+      });
+    });
+  });
+});
+</script>
+{% endblock %}

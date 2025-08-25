@@ -1,0 +1,84 @@
+{% load static %}
+<section id="testimonials" class="py-5" style="background-color:#FFF8F0;">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" style="color:#D99A6C;;">OUR CUSTOMERS LOVE</h2>
+
+        <div class="testimonial-scroll-wrapper d-flex overflow-auto">
+            
+            <!-- Testimonial 1 -->
+            <div class="testimonial-content-box text-center p-4 rounded shadow me-3 flex-shrink-0" style="min-width: 300px;">
+                <img src="{% static 'images/cat.png' %}" class="testimonial-img mb-3" alt="Daniel K.">
+                <p class="testimonial-text">"A hidden gem with real passion behind every bake. You can taste the quality in every bite."</p>
+                <small class="text-muted">— Daniel K., Chef & Culinary Enthusiast</small>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-content-box text-center p-4 rounded shadow me-3 flex-shrink-0" style="min-width: 300px;">
+                <img src="{% static 'images/boy.png' %}" class="testimonial-img mb-3" alt="Lena W.">
+                <p class="testimonial-text">"The kids love the cookies—and so do I! Soft, gooey, and always fresh."</p>
+                <small class="text-muted">— Lena W., Mom of Two</small>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-content-box text-center p-4 rounded shadow me-3 flex-shrink-0" style="min-width: 300px;">
+                <img src="{% static 'images/47.png' %}" class="testimonial-img mb-3" alt="Jessica M.">
+                <p class="testimonial-text">"Absolutely the best bakery in town! Their sourdough is unmatched, and the staff is always warm."</p>
+                <small class="text-muted">— Jessica M., Local Foodie</small>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-content-box text-center p-4 rounded shadow me-3 flex-shrink-0" style="min-width: 300px;">
+                <img src="{% static 'images/45.png' %}" class="testimonial-img mb-3" alt="Mark L.">
+                <p class="testimonial-text">"Their croissants are an absolute delight—crispy, buttery, and incredibly flaky."</p>
+                <small class="text-muted">— Mark L., Bakery Lover</small>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CSS -->
+<style>
+.testimonial-scroll-wrapper {
+    scroll-behavior: smooth; /* smooth scrolling */
+    padding-bottom: 10px;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.testimonial-scroll-wrapper::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+.testimonial-content-box {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 350px; /* increased height */
+    padding: 30px;
+     max-width: 500px; /* sets a fixed maximum width */
+    margin: 0 auto; /* centers the card */
+    height: 350px; /* optional: increase padding for spacing */
+}
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    border: 2px solid #f36b2c;
+}
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+    .testimonial-content-box {
+        height: 300px; /* smaller height on mobile */
+    }
+}
+
+</style>

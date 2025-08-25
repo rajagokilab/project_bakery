@@ -1,0 +1,148 @@
+/* Brand logo */
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color:#FFF8F0;
+}
+
+/* ---------- Animations ---------- */
+/* @keyframes colorPulse {
+    0% { color: #3498db; }
+    25% { color: #e74c3c; }
+    50% { color: #f1c40f; }
+    75% { color: #2ecc71; }
+    100% { color: #3498db; }
+} */
+
+/* @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+} */
+
+/* ---------- Hero Carousel ---------- */
+.carousel-item img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ---------- Section Titles ---------- */
+section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ---------- Why Choose Us ---------- */
+/* Icon circle style */
+/* Icon circle style */
+/* .icon-circle {
+    background-color: #D99A6C;
+    color: #FFF8F0; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto;
+} */
+
+
+
+
+/* Heading style */
+#why-choose-us h5 {
+    color: #D99A6C;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: 'League Spartan', sans-serif;
+}
+
+#why-choose-us .border {
+    height: 400px;
+    width: 200px;
+    border-color: #000000 !important;
+}
+#why-choose-us h5 {
+    color: #ff7f50;
+    font-weight: bold;
+}
+#why-choose-us p {
+    font-size: 1rem;
+}
+#why-choose-us .icon-circle i {
+    color: #FFF8F0; /* cream-white */
+    font-size: 28px;
+}
+
+/* ---------- Offers ---------- */
+/* .offers{
+    height: 500px;
+    width: 100%;
+} */
+
+/* ---------- FAQ ---------- */
+#faq .faq-item {
+    padding: 1rem 0;
+    border-bottom: 2px dotted black;
+}
+#faq .faq-item:last-child {
+    border-bottom: none;
+}
+#faq h5 {
+    color: black;
+    font-weight: bold;
+    font-family: 'League Spartan', sans-serif;
+}
+#faq p {
+    margin: 0.5rem 0 0;
+    font-family: 'League Spartan', sans-serif;
+    color: #333;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f5d7b8; /* matches your theme */
+}
+
+#testimonials .border {
+    width: 500px;
+    height: 300px;
+    gap: 50px;
+    border-color: #f5d7b8 !important;
+}
+#testimonials p {
+    font-style: italic;
+    font-size: 1rem;
+}
+#testimonials small {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* /* ---------- Footer ---------- */
+/* footer {
+    background-color: #222;
+    padding-top: 30px;
+}
+footer h5 {
+    color: #ffb84d;
+    font-weight: bold;
+}
+footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #ffb84d;
+}
+footer p {
+    font-size: 0.9rem;
+}  */ 
+  

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Our Products</h2>
+    <div class="row justify-content-center">
+        {% for category in categories %}
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="category-card">
+                <a href="{% url 'category_view' category.slug %}" class="text-decoration-none text-dark">
+                    <div class="category-card-image">
+                        <img src="{{ category.image }}" alt="{{ category.name }}">
+                    </div>
+                    <div class="category-card-body">
+                        <h5 class="text-capitalize">{{ category.name }}</h5>
+<p>{{ category.product_count }} Types</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

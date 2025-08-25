@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="fw-bold mb-4">Payment</h2>
+
+  <div class="row">
+    <!-- Product summary -->
+    <div class="col-md-5 mb-4">
+      <div class="card shadow p-3">
+        <img src="{{ product.image }}" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+        <h4>{{ product.name }}</h4>
+        <p class="text-muted">{{ product.description }}</p>
+        <h5 class="text-danger">₹{{ product.price }}</h5>
+      </div>
+    </div>
+
+    <!-- Card form -->
+    <div class="col-md-7">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+
+        <!-- Auto redirect script -->
+        <script>
+          setTimeout(function() {
+            window.location.href = "{% url 'home' %}";
+          }, 1100); // 60000 milliseconds = 1 minute
+        </script>
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label class="form-label fw-bold">Card Number</label>
+          <input type="text" name="card_number" class="form-control" placeholder="1234 5678 9876 5432" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">Expiry Date</label>
+            <input type="text" name="expiry" class="form-control" placeholder="MM/YY" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">CVV</label>
+            <input type="password" name="cvv" class="form-control" placeholder="***" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Name on Card</label>
+          <input type="text" name="name_on_card" class="form-control" placeholder="John Doe" required>
+        </div>
+
+        <button type="submit" class="btn btn-success px-5 fw-bold rounded-pill">
+          Pay Now
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

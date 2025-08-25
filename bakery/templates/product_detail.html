@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <img src="{{ product.image.url }}" class="w-100" alt="{{ product.name }}">
+            </div>
+
+            <!-- Pincode Input -->
+            <div class="mt-4">
+                <p class="mb-1 fw-bold">ENTER YOUR PINCODE*</p>
+                <input type="text" class="form-control pincode-input" placeholder="Enter Your Pincode">
+            </div>
+
+            <ul class="list-unstyled mt-4">
+                <li>✅ 100% secure payment</li>
+                <li>⏱ 24 hour preparation time</li>
+                <li>🥕 100% vegetarian</li>
+                <li>** Note: All orders will be dispatched after 24 hours **</li>
+            </ul>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <h2>{{ product.name }}</h2>
+            <p class="mt-4 fw-bold">A cake is a sweet, baked confectionery...</p>
+
+            <!-- Product Price -->
+            <h4>
+                ₹ <span id="total-price">{{ product.price }}</span>
+                <small class="text-muted">INCL. OF ALL TAXES</small>
+            </h4>
+
+            <!-- Weight selection -->
+            <div class="mb-3">
+                {% for w in product.weights %}
+                <button class="btn btn-outline-warning {% if w == selected_weight %}active{% endif %}">{{ w }}</button>
+                {% endfor %}
+            </div>
+
+            <!-- Quantity selector -->
+            <div class="mb-3 d-flex align-items-center gap-2">
+                <label>QUANTITY:</label>
+                <button class="btn btn-outline-secondary" id="decrease-btn">-</button>
+                <input type="text" id="quantity-input" value="1" class="form-control text-center" style="width:50px;" readonly>
+            </div>
+
+            <!-- Add to Cart Form -->
+            <form method="POST" action="{% url 'cart' %}">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit" class="btn btn-warning w-100 mb-2 rounded-xl shadow-sm">
+        Add to Cart
+    </button>
+</form>
+            <a href="{% url 'delivery_detail' product.id %}" class="btn btn-warning w-100">Buy Now</a>
+
+            <!-- Nutrition -->
+            <div class="mt-3">
+                <h5>Nutrition:</h5>
+                <p>Energy 250 kcal, Carbohydrates 35g, Fat 10g, Protein 4g per 100g.</p>
+            </div>
+
+            <!-- Ingredients -->
+            <div class="mt-3">
+                <h5>Ingredients:</h5>
+                <p>Refined flour, sugar, cocoa powder, fresh cream, butter, chocolate, baking powder</p>
+            </div>
+
+            <!-- Allergies -->
+            <div class="mt-3">
+                <h5>Allergies:</h5>
+                <p>Contains milk, cereals, and other allergens.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommended Products -->
+    <div class="mt-5 container">
+        <h4 class="text-center fw-bold mb-4">You May Also Like</h4>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for rec in recommended_products %}
+            <div class="col">
+                <div class="card border-0 shadow-sm rounded-4 position-relative h-100">
+                    <a href="{% url 'product_detail' rec.slug %}">
+                        <img src="{{ rec.image.url }}" class="card-img-top rounded-top-4" alt="{{ rec.name }}" style="height:280px; object-fit:cover;">
+                    </a>
+                    <div class="card-body text-center bg-warning bg-opacity-25 rounded-bottom-4 py-3">
+                        <h5 class="fw-bold text-uppercase mb-1">{{ rec.name }}</h5>
+                        <p class="mb-0">FROM: ₹ {{ rec.price }} <small class="text-muted">PER KG</small></p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-muted">No recommendations available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- JS for Quantity & Price Update -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const decreaseBtn = document.getElementById("decrease-btn");
+    const increaseBtn = document.getElementById("increase-btn");
+    const quantityInput = document.getElementById("quantity-input");
+    const quantityInputHidden = document.getElementById("quantity-input-hidden");
+    const totalPriceEl = document.getElementById("total-price");
+    const basePrice = parseFloat("{{ product.price }}");
+
+    function updatePrice() {
+        let qty = parseInt(quantityInput.value) || 1;
+        if (qty < 1) qty = 1;
+        quantityInput.value = qty;
+        quantityInputHidden.value = qty;
+        totalPriceEl.textContent = (basePrice * qty).toFixed(2);
+    }
+
+    decreaseBtn.addEventListener("click", () => {
+        let qty = parseInt(quantityInput.value) || 1;
+        if (qty > 1) { quantityInput.value = qty - 1; updatePrice(); }
+    });
+
+    increaseBtn?.addEventListener("click", () => {
+        let qty = parseInt(quantityInput.value) || 1;
+        quantityInput.value = qty + 1;
+        updatePrice();
+    });
+
+    updatePrice();
+});
+</script>
+{% endblock %}

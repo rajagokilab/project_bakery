@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}  
+<!-- Google Font: League Spartan -->
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container my-5 about-us-page">
+
+  <!-- Django Messages -->
+  {% if messages %}
+    <div class="mb-3">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Contact Section -->
+  <div class="row align-items-center">
+    <!-- Form -->
+    <div class="col-md-6 mb-4">
+      <h2 class="text-center text-warning fw-bold">SEND US A MESSAGE</h2>
+      <p class="text-center mb-4">You can also use the form below to contact us directly. Our team will get back to you within 24 hours.</p>
+<form id="contactForm" method="POST" novalidate>
+  {% csrf_token %}
+
+  <!-- Name -->
+  <div class="mb-3">
+    <label for="name" class="form-label">Name*</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+    <div class="invalid-feedback">Name must be at least 3 letters and contain only alphabets.</div>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email*</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+    <div class="invalid-feedback">Please enter a valid email address.</div>
+  </div>
+
+  <!-- Phone -->
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number*</label>
+    <input type="text" class="form-control" id="phone" name="phone" required>
+    <div class="invalid-feedback">Phone must be exactly 10 digits.</div>
+  </div>
+
+  <!-- Subject -->
+  <div class="mb-3">
+    <label for="subject" class="form-label">Subject*</label>
+    <input type="text" class="form-control" id="subject" name="subject" required>
+    <div class="invalid-feedback">Subject must be at least 5 characters long.</div>
+  </div>
+
+  <!-- Message -->
+  <div class="mb-3">
+    <label for="message" class="form-label">Message*</label>
+    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+    <div class="invalid-feedback">Message must be at least 10 characters long.</div>
+  </div>
+
+  <button type="submit" class="btn btn-warning w-100">Send Message</button>
+</form>
+
+
+    </div>
+
+    <!-- Right Image -->
+    <div class="col-md-6 text-center">
+      <img src="{% static 'images/49.png' %}" alt="Count memories not calories" class="img-fluid rounded shadow">
+    </div>
+  </div>
+
+  <!-- Branch Section -->
+  <div class="mt-5">
+    <h3 class="text-center text-warning fw-bold mb-4">OUR BRANCHES ACROSS TAMIL NADU</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{% static 'images/10.png' %}" class="img-fluid rounded mb-3" alt="Bakery Branch">
+              <img src="{% static 'images/9.png' %}" class="img-fluid rounde mb-3" alt="Bakery Branch">
+        <img src="{% static 'images/50.png' %}" class="img-fluid rounded  mb-3" alt="Bakery Branch">
+         <img src="{% static 'images/8.png' %}" class="img-fluid rounded  mb-3" alt="Bakery Branch">
+         <img src="{% static 'images/9.png' %}" class="img-fluid rounded mt-0 align-items-left"  alt="Bakery Branch">
+      </div>
+      <div class="col-md-6">
+        <ul class="list-unstyled" style=" font-size: 30px; line-height: 2.5;">
+          <li><strong>Chennai</strong> – No. 45, Anna Salai, T. Nagar, Chennai – 600017</li>
+          <li><strong>Coimbatore</strong> – 12, DB Road, RS Puram, Coimbatore – 641002</li>
+          <li><strong>Madurai</strong> – 28, KK Nagar Main Road, Madurai – 625020</li>
+          <li><strong>Trichy</strong> – 7, Salai Road, Thillai Nagar, Trichy – 620018</li>
+          <li><strong>Salem</strong> – 15, Five Roads, Fairlands, Salem – 636016</li>
+          <li><strong>vellore</strong> – No. 45, Anna Salai, T. Nagar, Chennai – 600017</li>
+          <li><strong>Cuddalore</strong> – 12, DB Road, RS Puram, Coimbatore – 641002</li>
+          <li><strong>Kanyakumari</strong> – 28, KK Nagar Main Road, Madurai – 625020</li>
+          <li><strong>Bangalore</strong> – 7, Salai Road, Thillai Nagar, Trichy – 620018</li>
+          <li><strong>Kerala</strong> – 15, Five Roads, Fairlands, Salem – 636016</li>
+          <!-- Add remaining branches -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
